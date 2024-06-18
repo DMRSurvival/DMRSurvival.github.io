@@ -120,13 +120,13 @@ body.dark {
   white-space: nowrap;
 }
 .menu_dahsboard::before {
-  content: "Dashboard";
+  content: "Projects";
 }
 .menu_editor::before {
-  content: "Editor";
+  content: "Resources";
 }
 .menu_setting::before {
-  content: "Setting";
+  content: "About DMR";
 }
 .sidebar.close .menu_title::before {
   content: "";
