@@ -279,7 +279,7 @@ body.dark {
 }
 
 .sidebar.close ~ .main-content {
-  margin-left: 90px; /* Adjust based on your sidebar collapsed width */
+  margin-left: 0px; /* Adjust based on your sidebar collapsed width */
 }
 
 @media screen and (max-width: 768px) {
