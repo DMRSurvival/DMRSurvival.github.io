@@ -119,8 +119,8 @@ body.dark {
   color: var(--grey-color);
   white-space: nowrap;
 }
-.menu_dahsboard::before {
-  content: "Dashboard";
+.menu_dashboard::before {
+  content: "Menu";
 }
 .menu_editor::before {
   content: "Editor";
