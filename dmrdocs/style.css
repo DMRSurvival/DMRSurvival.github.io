@@ -278,7 +278,7 @@ body.dark {
   color: var(--grey-color);
 }
 
-#sidebar.close ~ .main-content {
+.sidebar.close ~ .main-content {
   margin-left: 90px; /* Adjust based on your sidebar collapsed width */
 }
 
