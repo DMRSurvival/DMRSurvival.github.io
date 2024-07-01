@@ -122,8 +122,8 @@ body.dark {
 .menu_dashboard::before {
   content: "Menu";
 }
-.menu_editor::before {
-  content: "Editor";
+.menu_navigation::before {
+  content: "Navigation";
 }
 .menu_setting::before {
   content: "Setting";
