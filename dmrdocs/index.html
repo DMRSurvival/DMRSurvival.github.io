@@ -40,8 +40,6 @@
           .catch(error => console.error('Error loading sidebar:', error));
       }
 
-      // Load the sidebar when the page loads
-      window.onload = loadSidebar;
     </script>
 
     <!-- Main Content -->
@@ -53,5 +51,9 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+    <script>
+      // Load the sidebar when the page loads
+      window.onload = loadSidebar;
+    </script>
   </body>
 </html>
