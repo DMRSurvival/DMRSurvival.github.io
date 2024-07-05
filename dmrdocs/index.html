@@ -27,161 +27,86 @@
     </nav>
 
     <!-- sidebar -->
-    <nav class="sidebar">
-      <div class="menu_content">
-        <ul class="menu_items">
-          <div class="menu_title menu_dashboard"></div>
-          <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
-          <!-- start -->
-          <li class="item">
-            <a href="index.html" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bxs-book"></i>
-              </span>
-              <span class="navlink">Documents Home</span>
-            </a>
-          </li>
-          <li class="item">
-            <div class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bx-podcast"></i>
-              </span>
-              <span class="navlink">COTS Radios</span>
-              <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
+<div id="sidebar-container"></div>
 
-            <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Coming Soon</a>
-            </ul>
-          </li>
-          <!-- end -->
+    <script>
+      // Function to load the sidebar
+      function loadSidebar() {
+        fetch('sidebar.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('sidebar-container').innerHTML = data;
+            initializeSidebarFunctions(); // Initialize functions after loading sidebar
+          })
+          .catch(error => console.error('Error loading sidebar:', error));
+      }
 
-          <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
-          <!-- start -->
-          <li class="item">
-            <div class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bx-network-chart"></i>
-              </span>
-              <span class="navlink">MANET Systems</span>
-              <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
+      // Function to initialize sidebar functions
+      function initializeSidebarFunctions() {
+        const body = document.querySelector("body");
+        const darkLight = document.querySelector("#darkLight");
+        const sidebar = document.querySelector(".sidebar");
+        const submenuItems = document.querySelectorAll(".submenu_item");
+        const sidebarOpen = document.querySelector("#sidebarOpen");
+        const sidebarClose = document.querySelector(".collapse_sidebar");
+        const sidebarExpand = document.querySelector(".expand_sidebar");
 
-            <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Coming Soon</a>
-            </ul>
-          </li>
-          <!-- start -->
-          <li class="item">
-            <div class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bxs-barcode"></i>
-              </span>
-              <span class="navlink">Digital Data</span>
-              <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
+        // Handle sidebar toggle
+        sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
-            <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Coming Soon</a>
-            </ul>
-          </li>
-          <!-- end -->
-          <li class="item">
-            <div class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bxs-key"></i>
-              </span>
-              <span class="navlink">Cryptography</span>
-              <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
+        sidebarClose.addEventListener("click", () => {
+          sidebar.classList.add("close", "hoverable");
+        });
+        sidebarExpand.addEventListener("click", () => {
+          sidebar.classList.remove("close", "hoverable");
+        });
 
-            <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Coming Soon</a>
-            </ul>
-          </li>
-          <!-- break -->
-          <li class="item">
-            <div class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bxs-hdd"></i>
-              </span>
-              <span class="navlink">Data Storage</span>
-              <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
+        sidebar.addEventListener("mouseenter", () => {
+          if (sidebar.classList.contains("hoverable")) {
+            sidebar.classList.remove("close");
+          }
+        });
+        sidebar.addEventListener("mouseleave", () => {
+          if (sidebar.classList.contains("hoverable")) {
+            sidebar.classList.add("close");
+          }
+        });
 
-            <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Coming Soon</a>
-            </ul>
-          </li>
-          <!-- break -->
-          <li class="item">
-            <div class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bxs-face-mask"></i>
-              </span>
-              <span class="navlink">Privacy</span>
-              <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
+        // Handle dark/light mode toggle
+        darkLight.addEventListener("click", () => {
+          body.classList.toggle("dark");
+          if (body.classList.contains("dark")) {
+            darkLight.classList.replace("bx-moon", "bx-sun");
+          } else {
+            darkLight.classList.replace("bx-sun", "bx-moon");
+          }
+        });
 
-            <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Coming Soon</a>
-            </ul>
-          </li>
-        </ul>
+        // Set the initial state of the dark/light icon based on the body class
+        document.addEventListener("DOMContentLoaded", () => {
+          if (body.classList.contains("dark")) {
+            darkLight.classList.replace("bx-moon", "bx-sun");
+          } else {
+            darkLight.classList.replace("bx-sun", "bx-moon");
+          }
+        });
 
-        <ul class="menu_items">
-          <div class="menu_title menu_navigation"></div>
-          <!-- duplicate these li tag if you want to add or remove navlink only -->
-          <!-- Start -->
-          <li class="item">
-            <a href="../index" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-home-alt"></i>
-              </span>
-              <span class="navlink">Webpage Home</span>
-            </a>
-          </li>
-          <li class="item">
-            <a href="http://www.youtube.com/@DMRSurvival" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bxl-youtube"></i>
-              </span>
-              <span class="navlink">YouTube</span>
-            </a>
-          </li>
-          <!-- End -->
+        // Handle submenu toggle
+        submenuItems.forEach((item, index) => {
+          item.addEventListener("click", () => {
+            item.classList.toggle("show_submenu");
+            submenuItems.forEach((item2, index2) => {
+              if (index !== index2) {
+                item2.classList.remove("show_submenu");
+              }
+            });
+          });
+        });
+      }
 
-          <li class="item">
-            <a href="https://github.com/DMRSurvival" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bxl-github"></i>
-              </span>
-              <span class="navlink">Github</span>
-            </a>
-          </li>
-          <li class="item">
-            <a href="contact.html" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bxs-contact"></i>
-              </span>
-              <span class="navlink">Contact</span>
-            </a>
-          </li>
-        </ul>
-
-        <!-- Sidebar Open / Close -->
-        <div class="bottom_content">
-          <div class="bottom expand_sidebar">
-            <span> Expand</span>
-            <i class='bx bx-log-in' ></i>
-          </div>
-          <div class="bottom collapse_sidebar">
-            <span> Collapse</span>
-            <i class='bx bx-log-out'></i>
-          </div>
-        </div>
-      </div>
-    </nav>
+      // Load the sidebar when the page loads
+      window.onload = loadSidebar;
+    </script>
 
     <!-- Main Content -->
     <div class="main-content">
