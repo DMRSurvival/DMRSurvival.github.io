@@ -27,7 +27,7 @@
     </nav>
 
     <!-- sidebar -->
-    <div id="sidebar-container"></div>
+<div id="sidebar-container"></div>
 
     <script>
       // Function to load the sidebar
@@ -36,10 +36,76 @@
           .then(response => response.text())
           .then(data => {
             document.getElementById('sidebar-container').innerHTML = data;
+            initializeSidebarFunctions(); // Initialize functions after loading sidebar
           })
           .catch(error => console.error('Error loading sidebar:', error));
       }
 
+      // Function to initialize sidebar functions
+      function initializeSidebarFunctions() {
+        const body = document.querySelector("body");
+        const darkLight = document.querySelector("#darkLight");
+        const sidebar = document.querySelector(".sidebar");
+        const submenuItems = document.querySelectorAll(".submenu_item");
+        const sidebarOpen = document.querySelector("#sidebarOpen");
+        const sidebarClose = document.querySelector(".collapse_sidebar");
+        const sidebarExpand = document.querySelector(".expand_sidebar");
+
+        // Handle sidebar toggle
+        sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+
+        sidebarClose.addEventListener("click", () => {
+          sidebar.classList.add("close", "hoverable");
+        });
+        sidebarExpand.addEventListener("click", () => {
+          sidebar.classList.remove("close", "hoverable");
+        });
+
+        sidebar.addEventListener("mouseenter", () => {
+          if (sidebar.classList.contains("hoverable")) {
+            sidebar.classList.remove("close");
+          }
+        });
+        sidebar.addEventListener("mouseleave", () => {
+          if (sidebar.classList.contains("hoverable")) {
+            sidebar.classList.add("close");
+          }
+        });
+
+        // Handle dark/light mode toggle
+        darkLight.addEventListener("click", () => {
+          body.classList.toggle("dark");
+          if (body.classList.contains("dark")) {
+            darkLight.classList.replace("bx-moon", "bx-sun");
+          } else {
+            darkLight.classList.replace("bx-sun", "bx-moon");
+          }
+        });
+
+        // Set the initial state of the dark/light icon based on the body class
+        document.addEventListener("DOMContentLoaded", () => {
+          if (body.classList.contains("dark")) {
+            darkLight.classList.replace("bx-moon", "bx-sun");
+          } else {
+            darkLight.classList.replace("bx-sun", "bx-moon");
+          }
+        });
+
+        // Handle submenu toggle
+        submenuItems.forEach((item, index) => {
+          item.addEventListener("click", () => {
+            item.classList.toggle("show_submenu");
+            submenuItems.forEach((item2, index2) => {
+              if (index !== index2) {
+                item2.classList.remove("show_submenu");
+              }
+            });
+          });
+        });
+      }
+
+      // Load the sidebar when the page loads
+      window.onload = loadSidebar;
     </script>
 
     <!-- Main Content -->
@@ -51,9 +117,5 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
-    <script>
-      // Load the sidebar when the page loads
-      window.onload = loadSidebar;
-    </script>
   </body>
 </html>
