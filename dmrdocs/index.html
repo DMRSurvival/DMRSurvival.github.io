@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>DMR Survival Documents</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class=dark>
+    <!-- navbar -->
+    <nav class="navbar">
+      <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+        <img src="images/logo.png" alt=""></i>Dark Mountain Research
+      </div>
+
+      <div class="search_bar">
+        <input type="text" placeholder="Search" />
+      </div>
+
+      <div class="navbar_content">
+        <i class="bi bi-grid"></i>
+        <i class='bx bx-sun' id="darkLight"></i>
+      </div>
+    </nav>
+
+    <!-- sidebar -->
+    <div id="sidebar-container"></div>
+
+    <script>
+      // Function to load the sidebar
+      function loadSidebar() {
+        fetch('sidebar.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('sidebar-container').innerHTML = data;
+          })
+          .catch(error => console.error('Error loading sidebar:', error));
+      }
+
+      // Load the sidebar when the page loads
+      window.onload = loadSidebar;
+    </script>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1>Welcome to My Website</h1>
+      <p>This is the main content area. Add your content here.</p>
+      <a href="#">Learn more</a>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
