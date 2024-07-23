@@ -25,6 +25,7 @@ body.dark {
   --white-color: #333;
   --blue-color: #fff;
   --grey-color: #f2f2f2;
+  --grey-color-dark: #202020;
   --grey-color-light: #aaa;
   --black-color: #f2f2f2;
 }
