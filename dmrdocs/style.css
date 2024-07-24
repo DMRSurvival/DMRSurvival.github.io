@@ -19,7 +19,7 @@ body {
   transition: all 0.5s ease;
 }
 body.dark {
-  background-color: #202020;
+  background-color: #282828;
 }
 body.dark {
   --white-color: #333;
