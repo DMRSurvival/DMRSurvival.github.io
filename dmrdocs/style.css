@@ -22,7 +22,7 @@ body.dark {
   background-color: #282828;
 }
 body.dark {
-  --white-color: #333;
+  --white-color: #282828;
   --blue-color: #fff;
   --grey-color: #f2f2f2;
   --grey-color-dark: #202020;
